@@ -1,5 +1,10 @@
 #include <iostream>
+#include "Circuito.h"
+
+using namespace std;
+using namespace tCircuito;
 
 int main() {
-  std::cout << "Hello World!\n";
+ circuito var;
+ cout << var;
 }
