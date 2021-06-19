@@ -1,15 +1,27 @@
 using namespace std;
 namespace tCircuito{
 
-  struct circuito {
-    int v1,r1,r2;
-    circuito(): v1(5), r1(1), r2(1){
-    }
+  void paralelo(float v1, float r1, float r2){
+    float resT, corrente, potencia;
+    cout << v1 << r1 << r2 << endl;
+    resT = r1*r2/(r1+r2);
+    cout << resT << endl;
+    corrente = v1/resT;
+    potencia = v1 * corrente;
+    cout << "A resistencia em paralelo é: " << resT << " ohm(s)\n";
+    cout << "A corrente total é: " << corrente <<" A\n";
+    cout << "A potencia é: " << potencia << " W\n";
+  }
 
-      friend ostream& operator << (ostream& os, const circuito& dt)
-    {
-    os << "Fonte: " << dt.v1 << " Volt(s)\n" << "Resistencia 1: " << dt.r1 << " Ohm(s)\n" << "Resistencia 2: " << dt.r2 << " Ohm(s)\n";
-    return os;
-    }
-  };
+  void serie(float v1, float r1, float r2){
+    float resT, corrente, potencia;
+    cout << v1 << r1 << r2 << endl;
+    resT = r1+r2;
+    cout << resT << endl;
+    corrente = v1/resT;
+    potencia = v1 * corrente;
+    cout << "A resistencia em serie é: " << resT << " ohm(s)\n";
+    cout << "A corrente total é: " << corrente <<" A\n";
+    cout << "A potencia é: " << potencia << " W\n";
+  }
 }
