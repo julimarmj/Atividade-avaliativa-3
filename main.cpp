@@ -2,29 +2,38 @@
 #include "Circuito.h"
 
 using namespace std;
-using namespace tCircuito;
-
-struct circuito {
-    int v1,r1,r2;
-    
-    circuito(int valV1, int res1, int res2): v1(valV1), r1(res1), r2(res2){
-
-    }
-
-    friend ostream& operator << (ostream& os, const circuito& dt)
-    {
-      os << "Fonte: " << dt.v1 << " Volt(s)\n" << "Resistencia 1: " << dt.r1 << " Ohm(s)\n" << "Resistencia 2: " << dt.r2 << " Ohm(s)\n";
-    
-    return os;
-    }
-  };
+using namespace propCircuito;
 
 int main() {
-  int r=0;
- circuito var(0, 0, 0);
- var.v1=4;
- var.r1=1;
- var.r2=2;
- cout << var;
- paralelo( var.v1, var.r1, var.r2);
+  int i=0, tipo=0;
+
+  tCircuito var(0, 0, 0);
+  
+  cout << "Informe o valor da fonte: \n";
+  cin >> var.v1;
+  cout << "Informe o valor da primeira resistência: \n";
+  cin >> var.r1;
+  cout << "Informe o valor da segunda resistência: \n";
+  cin >> var.r2;
+
+  do {
+    cout << "Para qual circuito deseja obter as informações: \n1 - Paralelo \n2 - Série \n";
+    cin >> tipo;
+
+   if (tipo==1){
+      cout <<"------------------------------------------------\n";
+      cout << var;
+      paralelo( var.v1, var.r1, var.r2);
+      i=0;
+      }else if(tipo == 2){
+      cout <<"------------------------------------------------\n";
+      cout << var;
+      serie( var.v1, var.r1, var.r2);
+      i=0;
+      }else {
+      cout << "Opção nao listada!\n";
+      i=1;
+      }
+  }    
+  while(i);
 }
